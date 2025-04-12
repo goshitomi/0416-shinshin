@@ -93,3 +93,27 @@ document.addEventListener('DOMContentLoaded', () => {
     // 뒤로가기 버튼 이벤트
     backButton.addEventListener('click', goBack);
 });
+
+// 키워드 아이템 클릭 이벤트
+document.querySelectorAll('.keyword-item').forEach(item => {
+    item.addEventListener('click', function() {
+        // 다른 모든 아이템에서 active 클래스 제거
+        document.querySelectorAll('.keyword-item').forEach(otherItem => {
+            if (otherItem !== this) {
+                otherItem.classList.remove('active');
+            }
+        });
+        
+        // 현재 클릭한 아이템에 active 클래스 토글
+        this.classList.toggle('active');
+    });
+});
+
+// 뒤로 가기 링크 클릭 이벤트
+document.querySelector('.back-link').addEventListener('click', function() {
+    document.querySelector('.keywords-page').style.display = 'none';
+    // 모든 키워드 아이템에서 active 클래스 제거
+    document.querySelectorAll('.keyword-item').forEach(item => {
+        item.classList.remove('active');
+    });
+});
