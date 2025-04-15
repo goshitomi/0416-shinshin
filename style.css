@@ -54,6 +54,16 @@ body {
     cursor: pointer;
 }
 
+a {
+    color: #999999; /* 회색으로 변경 */
+    text-decoration: none; /* 밑줄 제거 */
+}
+
+a:hover {
+    color: #cccccc; /* 호버시 밝은 회색으로 변경 */
+    text-decoration: underline; /* 호버시 밑줄 표시 (선택사항) */
+}
+
 .char {
     display: inline-block;
     opacity: 0;
@@ -247,7 +257,7 @@ body {
 
 .navigation {
     position: fixed;
-    bottom: 4rem;
+    bottom: 40px;
     left: 0;
     width: 100%;
     text-align: center;
@@ -406,6 +416,74 @@ body {
     margin: 0;
     padding: 0;
     line-height: 1.2;
+}
+
+/* 전체 내용 페이지 스타일 */
+.full-content-page {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+.full-content-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    color: #fff;
+}
+
+.content-text {
+    font-family: 'Heitz', sans-serif;
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    line-height: 2;
+    word-break: keep-all;
+    margin-bottom: 4rem;
+    letter-spacing: -0.02em;
+}
+
+.content-text p {
+    margin-bottom: 2rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.content-text p.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.full-content-page .navigation {
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    margin-top: 2rem;
+}
+
+.full-content-page .navigation p {
+    font-family: 'Heitz', sans-serif;
+    font-size: clamp(0.8rem, 1.5vw, 1rem);
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .full-content-container {
+        padding: 3rem 1.5rem;
+        max-width: 500px;
+    }
+}
+
+@media (max-width: 480px) {
+    .full-content-container {
+        max-width: 400px;
+    }
 }
 
 
