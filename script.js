@@ -1,38 +1,56 @@
 document.addEventListener('DOMContentLoaded', function() {
     // 텍스트 애니메이션
-    const textElements = [
-        document.getElementById('text1'),
-        document.getElementById('text2'),
-        document.getElementById('text3'),
-        document.getElementById('text4'),
-        document.getElementById('text5')
-    ];
+    const textElements = [];
+    for(let i = 1; i <= 25; i++) {
+        const element = document.getElementById('text' + i);
+        if(element) textElements.push(element);
+    }
     
     let currentIndex = 0;
+    
+    function getAnimationDuration(element) {
+        const text = element.textContent;
+        // 텍스트 길이에 따라 지속 시간 조정
+        if (text.length > 50) return 1500;
+        if (text.length > 30) return 1200;
+        return 800;
+    }
+
+    function getDisplayDuration(element) {
+        const text = element.textContent;
+        // 텍스트 길이에 따라 표시 시간 조정
+        if (text.length > 50) return 2000;
+        if (text.length > 30) return 1500;
+        return 800;
+    }
     
     function animateText() {
         if (currentIndex >= textElements.length) {
             currentIndex = 0;
         }
         
+        const currentElement = textElements[currentIndex];
+        const animationDuration = getAnimationDuration(currentElement);
+        const displayDuration = getDisplayDuration(currentElement);
+        
         anime({
-            targets: textElements[currentIndex],
+            targets: currentElement,
             opacity: [0, 1],
-            duration: 800,
+            duration: animationDuration,
             easing: 'easeInOutQuad',
             complete: function() {
                 setTimeout(function() {
                     anime({
-                        targets: textElements[currentIndex],
+                        targets: currentElement,
                         opacity: 0,
-                        duration: 800,
+                        duration: animationDuration,
                         easing: 'easeInOutQuad',
                         complete: function() {
                             currentIndex++;
                             setTimeout(animateText, 300);
                         }
                     });
-                }, 800);
+                }, displayDuration);
             }
         });
     }

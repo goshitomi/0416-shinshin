@@ -256,7 +256,7 @@ body {
 
 .back-link {
     display: inline-block;
-    color: #ff0000;
+    color: white;
     text-decoration: none;
     font-size: clamp(1.2rem, 3vw, 1.5rem);
     font-weight: bold;
@@ -380,6 +380,32 @@ body {
     font-size: clamp(0.8rem, 2vw, 1rem);
     color: #ffffff;
     opacity: 0.8;
+}
+
+.right-side-text {
+    position: fixed;
+    right: 50px;
+    top: 50%;
+    transform: translateY(-50%) rotate(90deg);
+    transform-origin: right center;
+    font-size: 16px;
+    color: #333;
+    font-family: 'Heitz-Bold', sans-serif;
+    letter-spacing: 2px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    margin: 0;
+    padding: 0;
+}
+
+.right-side-text div {
+    margin: 0;
+    padding: 0;
+    line-height: 1.2;
 }
 
 
